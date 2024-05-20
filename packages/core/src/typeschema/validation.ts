@@ -580,12 +580,7 @@ export function matchDiscriminant(
     return false;
   }
 
-  let sliceElement: InternalSchemaElement | undefined;
-  if (discriminator.path === '$this') {
-    sliceElement = slice;
-  } else {
-    sliceElement = (elements ?? slice.elements)[discriminator.path];
-  }
+  const sliceElement: InternalSchemaElement = (elements ?? slice.elements)[discriminator.path];
 
   const sliceType = slice.type;
   switch (discriminator.type) {
@@ -594,17 +589,7 @@ export function matchDiscriminant(
       if (!value || !sliceElement) {
         return false;
       }
-      if (sliceElement.pattern) {
-        return deepIncludes(value, sliceElement.pattern);
-      }
-      if (sliceElement.fixed) {
-        return deepEquals(value, sliceElement.fixed);
-      }
-
-      if (sliceElement.binding?.strength === 'required' && sliceElement.binding.valueSet) {
-        // This cannot be implemented correctly without asynchronous validation, so make it permissive for now.
-        // Ideally this should check something like value.value.coding.some((code) => isValidCode(sliceElement.binding.valueSet, code))
-        // where isValidCode is a function that checks if the code is included in the expansion of the ValueSet
+      if (matchesSpecifiedValue(value, sliceElement)) {
         return true;
       }
       break;

@@ -42,10 +42,9 @@ export function Medications(props: MedicationsProps): JSX.Element {
           Medications
         </Text>
         <Anchor
-          component="button"
+          href="#"
           onClick={(e) => {
             killEvent(e);
-            setEditMedication(undefined);
             open();
           }}
         >
@@ -55,11 +54,11 @@ export function Medications(props: MedicationsProps): JSX.Element {
       {medicationRequests.length > 0 ? (
         <Box>
           {medicationRequests.map((request) => (
-            <ConceptBadge<MedicationRequest>
+            <ConceptBadge
               key={request.id}
               resource={request}
               onEdit={(mr) => {
-                setEditMedication(mr);
+                setEditMedication(mr as MedicationRequest);
                 open();
               }}
             />

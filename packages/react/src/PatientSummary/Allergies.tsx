@@ -42,10 +42,9 @@ export function Allergies(props: AllergiesProps): JSX.Element {
           Allergies
         </Text>
         <Anchor
-          component="button"
+          href="#"
           onClick={(e) => {
             killEvent(e);
-            setEditAllergy(undefined);
             open();
           }}
         >
@@ -59,7 +58,7 @@ export function Allergies(props: AllergiesProps): JSX.Element {
               key={allergy.id}
               resource={allergy}
               onEdit={(a) => {
-                setEditAllergy(a);
+                setEditAllergy(a as AllergyIntolerance);
                 open();
               }}
             />

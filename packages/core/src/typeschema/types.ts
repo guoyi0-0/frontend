@@ -66,10 +66,15 @@ export interface SlicingRules {
   slices: SliceDefinition[];
 }
 
-export interface SliceDefinition extends Omit<InternalSchemaElement, 'slicing'> {
+export interface SliceDefinition {
   name: string;
+  path: string;
   definition?: string;
+  type?: ElementType[];
   elements: Record<string, InternalSchemaElement>;
+  min: number;
+  max: number;
+  binding?: ElementDefinitionBinding;
 }
 
 export interface SliceDiscriminator {
@@ -435,12 +440,15 @@ class StructureDefinitionParser {
     if (this.slicingContext.current) {
       this.slicingContext.field.slices.push(this.slicingContext.current);
     }
-
     this.slicingContext.current = {
-      ...this.parseElementDefinition(element),
       name: element.sliceName ?? '',
+      path: element.path ?? '',
       definition: element.definition,
+      type: this.parseElementDefinitionType(element),
       elements: {},
+      min: element.min ?? 0,
+      max: element.max === '*' ? Number.POSITIVE_INFINITY : Number.parseInt(element.max as string, 10),
+      binding: element.binding,
     };
   }
 

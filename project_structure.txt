@@ -1,0 +1,775 @@
+.
+├── medplum-provider
+│   ├── README.md
+│   ├── index.html
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── postcss.config.mjs
+│   ├── src
+│   │   ├── App.tsx
+│   │   ├── components
+│   │   │   ├── ResourceFormWithRequiredProfile.tsx
+│   │   │   ├── soapnote
+│   │   │   │   ├── SoapNote.questionnaire.ts
+│   │   │   │   └── SoapNote.tsx
+│   │   │   └── tasks
+│   │   │       ├── DiagnosticReportTask.tsx
+│   │   │       ├── QuestionnaireTask.tsx
+│   │   │       ├── TaskList.tsx
+│   │   │       └── actions
+│   │   │           ├── AddDueDate.tsx
+│   │   │           ├── AddNote.tsx
+│   │   │           ├── AssignRole.tsx
+│   │   │           ├── AssignTask.tsx
+│   │   │           ├── ClaimTask.tsx
+│   │   │           ├── CompleteTask.tsx
+│   │   │           ├── DeleteTask.tsx
+│   │   │           ├── PauseResumeTask.tsx
+│   │   │           ├── TaskActions.tsx
+│   │   │           └── UpdateBusinessStatus.tsx
+│   │   ├── hooks
+│   │   │   └── usePatient.ts
+│   │   ├── main.tsx
+│   │   ├── pages
+│   │   │   ├── HomePage.tsx
+│   │   │   ├── OnboardingPage.tsx
+│   │   │   ├── SearchPage.module.css
+│   │   │   ├── SearchPage.tsx
+│   │   │   ├── SignInPage.tsx
+│   │   │   ├── patient
+│   │   │   │   ├── CommunicationTab.tsx
+│   │   │   │   ├── EditTab.tsx
+│   │   │   │   ├── EncounterTab.tsx
+│   │   │   │   ├── PatientPage.module.css
+│   │   │   │   ├── PatientPage.tsx
+│   │   │   │   ├── PatientPage.utils.ts
+│   │   │   │   ├── PatientSearchPage.tsx
+│   │   │   │   ├── TaskTab.tsx
+│   │   │   │   └── TimelineTab.tsx
+│   │   │   └── resource
+│   │   │       ├── ResourceCreatePage.tsx
+│   │   │       ├── ResourceDetailPage.tsx
+│   │   │       ├── ResourceEditPage.tsx
+│   │   │       ├── ResourceHistoryPage.tsx
+│   │   │       ├── ResourcePage.module.css
+│   │   │       ├── ResourcePage.tsx
+│   │   │       ├── useResourceType.ts
+│   │   │       └── utils.ts
+│   │   ├── utils.ts
+│   │   └── vite-env.d.ts
+│   ├── tsconfig.json
+│   ├── vercel.json
+│   └── vite.config.ts
+├── packages
+│   ├── README.md
+│   ├── core
+│   │   ├── README.md
+│   │   ├── api-extractor.json
+│   │   ├── babel.config.cjs
+│   │   ├── esbuild.mjs
+│   │   ├── jest.config.json
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── src
+│   │   │   ├── access.test.ts
+│   │   │   ├── access.ts
+│   │   │   ├── agent.ts
+│   │   │   ├── base-schema.json
+│   │   │   ├── base-schema.test.ts
+│   │   │   ├── base-schema.ts
+│   │   │   ├── base64.test.ts
+│   │   │   ├── base64.ts
+│   │   │   ├── bundle.test.ts
+│   │   │   ├── bundle.ts
+│   │   │   ├── cache.test.ts
+│   │   │   ├── cache.ts
+│   │   │   ├── client-fhircast.test.ts
+│   │   │   ├── client-subscriptions.test.ts
+│   │   │   ├── client-test-utils.ts
+│   │   │   ├── client.test.ts
+│   │   │   ├── client.ts
+│   │   │   ├── config.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── contenttype.ts
+│   │   │   ├── crypto.ts
+│   │   │   ├── default-values.test.ts
+│   │   │   ├── default-values.ts
+│   │   │   ├── elements-context.test.ts
+│   │   │   ├── elements-context.ts
+│   │   │   ├── eventtarget.test.ts
+│   │   │   ├── eventtarget.ts
+│   │   │   ├── fhircast
+│   │   │   │   ├── index.test.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── test-utils.test.ts
+│   │   │   │   └── test-utils.ts
+│   │   │   ├── fhirlexer
+│   │   │   │   ├── README.md
+│   │   │   │   ├── parse.ts
+│   │   │   │   └── tokenize.ts
+│   │   │   ├── fhirmapper
+│   │   │   │   ├── README.md
+│   │   │   │   ├── conceptmaptranslate.test.ts
+│   │   │   │   ├── conceptmaptranslate.ts
+│   │   │   │   ├── parse.cda.test.ts
+│   │   │   │   ├── parse.test.ts
+│   │   │   │   ├── parse.ts
+│   │   │   │   ├── tokenize.test.ts
+│   │   │   │   ├── tokenize.ts
+│   │   │   │   ├── transform.cda.test.ts
+│   │   │   │   ├── transform.copy.test.ts
+│   │   │   │   ├── transform.dependent.test.ts
+│   │   │   │   ├── transform.errors.test.ts
+│   │   │   │   ├── transform.evaluate.test.ts
+│   │   │   │   ├── transform.import.test.ts
+│   │   │   │   ├── transform.literal.test.ts
+│   │   │   │   ├── transform.test.ts
+│   │   │   │   ├── transform.ts
+│   │   │   │   └── transform.types.test.ts
+│   │   │   ├── fhirpath
+│   │   │   │   ├── README.md
+│   │   │   │   ├── atoms.test.ts
+│   │   │   │   ├── atoms.ts
+│   │   │   │   ├── date.ts
+│   │   │   │   ├── fhirpath.test.ts
+│   │   │   │   ├── functions.test.ts
+│   │   │   │   ├── functions.ts
+│   │   │   │   ├── parse.test.ts
+│   │   │   │   ├── parse.ts
+│   │   │   │   ├── tokenize.test.ts
+│   │   │   │   ├── tokenize.ts
+│   │   │   │   ├── utils.test.ts
+│   │   │   │   └── utils.ts
+│   │   │   ├── filter
+│   │   │   │   ├── README.md
+│   │   │   │   ├── parse.test.ts
+│   │   │   │   ├── parse.ts
+│   │   │   │   ├── tokenize.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── format.test.ts
+│   │   │   ├── format.ts
+│   │   │   ├── hl7.test.ts
+│   │   │   ├── hl7.ts
+│   │   │   ├── index.test.ts
+│   │   │   ├── index.ts
+│   │   │   ├── jwt.test.ts
+│   │   │   ├── jwt.ts
+│   │   │   ├── keyvalue.test.ts
+│   │   │   ├── keyvalue.ts
+│   │   │   ├── logger.test.ts
+│   │   │   ├── logger.ts
+│   │   │   ├── outcomes.test.ts
+│   │   │   ├── outcomes.ts
+│   │   │   ├── readablepromise.test.ts
+│   │   │   ├── readablepromise.ts
+│   │   │   ├── schema-crawler.ts
+│   │   │   ├── schema.test.ts
+│   │   │   ├── schema.ts
+│   │   │   ├── search
+│   │   │   │   ├── details.test.ts
+│   │   │   │   ├── details.ts
+│   │   │   │   ├── match.test.ts
+│   │   │   │   ├── match.ts
+│   │   │   │   ├── parse.test.ts
+│   │   │   │   ├── search.test.ts
+│   │   │   │   └── search.ts
+│   │   │   ├── sftp.test.ts
+│   │   │   ├── sftp.ts
+│   │   │   ├── storage.test.ts
+│   │   │   ├── storage.ts
+│   │   │   ├── subscriptions
+│   │   │   │   ├── index.test.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── types.test.ts
+│   │   │   ├── types.ts
+│   │   │   ├── typeschema
+│   │   │   │   ├── __test__
+│   │   │   │   │   ├── base-patient.json
+│   │   │   │   │   ├── body-weight-profile.json
+│   │   │   │   │   ├── capability-statement.json
+│   │   │   │   │   ├── compressed-observation-def.json
+│   │   │   │   │   ├── compressed-observation.json
+│   │   │   │   │   ├── us-core-blood-pressure.json
+│   │   │   │   │   └── us-core-patient.json
+│   │   │   │   ├── crawler.test.ts
+│   │   │   │   ├── crawler.ts
+│   │   │   │   ├── slices.ts
+│   │   │   │   ├── types.test.ts
+│   │   │   │   ├── types.ts
+│   │   │   │   ├── validate-sd.test.ts
+│   │   │   │   ├── validation.test.ts
+│   │   │   │   └── validation.ts
+│   │   │   ├── utils.test.ts
+│   │   │   └── utils.ts
+│   │   ├── test.setup.cjs
+│   │   ├── tsconfig.json
+│   │   └── tsdoc.json
+│   ├── react
+│   │   ├── README.md
+│   │   ├── api-extractor.json
+│   │   ├── babel.config.cjs
+│   │   ├── esbuild.mjs
+│   │   ├── jest.config.json
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── postcss.config.mjs
+│   │   ├── public
+│   │   │   ├── avatars
+│   │   │   │   ├── 1.jpg
+│   │   │   │   ├── 2.jpg
+│   │   │   │   └── 3.jpg
+│   │   │   └── robots.txt
+│   │   ├── src
+│   │   │   ├── AddressDisplay
+│   │   │   │   ├── AddressDisplay.stories.tsx
+│   │   │   │   ├── AddressDisplay.test.tsx
+│   │   │   │   └── AddressDisplay.tsx
+│   │   │   ├── AddressInput
+│   │   │   │   ├── AddressInput.stories.tsx
+│   │   │   │   ├── AddressInput.test.tsx
+│   │   │   │   └── AddressInput.tsx
+│   │   │   ├── AnnotationInput
+│   │   │   │   ├── AnnotationInput.stories.tsx
+│   │   │   │   ├── AnnotationInput.test.tsx
+│   │   │   │   └── AnnotationInput.tsx
+│   │   │   ├── AppShell
+│   │   │   │   ├── AppShell.module.css
+│   │   │   │   ├── AppShell.stories.module.css
+│   │   │   │   ├── AppShell.stories.tsx
+│   │   │   │   ├── AppShell.test.tsx
+│   │   │   │   ├── AppShell.tsx
+│   │   │   │   ├── Header.module.css
+│   │   │   │   ├── Header.test.tsx
+│   │   │   │   ├── Header.tsx
+│   │   │   │   ├── HeaderDropdown.tsx
+│   │   │   │   ├── HeaderSearchInput.module.css
+│   │   │   │   ├── HeaderSearchInput.test.tsx
+│   │   │   │   ├── HeaderSearchInput.tsx
+│   │   │   │   ├── Navbar.module.css
+│   │   │   │   ├── Navbar.test.tsx
+│   │   │   │   └── Navbar.tsx
+│   │   │   ├── AsyncAutocomplete
+│   │   │   │   └── AsyncAutocomplete.tsx
+│   │   │   ├── AttachmentArrayDisplay
+│   │   │   │   ├── AttachmentArrayDisplay.stories.tsx
+│   │   │   │   └── AttachmentArrayDisplay.tsx
+│   │   │   ├── AttachmentArrayInput
+│   │   │   │   ├── AttachmentArrayInput.stories.tsx
+│   │   │   │   ├── AttachmentArrayInput.test.tsx
+│   │   │   │   └── AttachmentArrayInput.tsx
+│   │   │   ├── AttachmentButton
+│   │   │   │   ├── AttachmentButton.stories.tsx
+│   │   │   │   ├── AttachmentButton.test.tsx
+│   │   │   │   └── AttachmentButton.tsx
+│   │   │   ├── AttachmentDisplay
+│   │   │   │   ├── AttachmentDisplay.stories.tsx
+│   │   │   │   ├── AttachmentDisplay.test.tsx
+│   │   │   │   └── AttachmentDisplay.tsx
+│   │   │   ├── AttachmentInput
+│   │   │   │   ├── AttachmentInput.stories.tsx
+│   │   │   │   ├── AttachmentInput.test.tsx
+│   │   │   │   └── AttachmentInput.tsx
+│   │   │   ├── BackboneElementDisplay
+│   │   │   │   ├── BackboneElementDisplay.stories.tsx
+│   │   │   │   ├── BackboneElementDisplay.test.tsx
+│   │   │   │   └── BackboneElementDisplay.tsx
+│   │   │   ├── BackboneElementInput
+│   │   │   │   ├── BackboneElementInput.stories.tsx
+│   │   │   │   ├── BackboneElementInput.test.tsx
+│   │   │   │   └── BackboneElementInput.tsx
+│   │   │   ├── BookmarkDialog
+│   │   │   │   ├── BookmarkDialog.test.tsx
+│   │   │   │   └── BookmarkDialog.tsx
+│   │   │   ├── CalendarInput
+│   │   │   │   ├── CalendarInput.module.css
+│   │   │   │   ├── CalendarInput.stories.tsx
+│   │   │   │   ├── CalendarInput.test.tsx
+│   │   │   │   ├── CalendarInput.tsx
+│   │   │   │   └── CalendarInput.utils.ts
+│   │   │   ├── CheckboxFormSection
+│   │   │   │   └── CheckboxFormSection.tsx
+│   │   │   ├── CodeInput
+│   │   │   │   ├── CodeInput.stories.tsx
+│   │   │   │   ├── CodeInput.test.tsx
+│   │   │   │   └── CodeInput.tsx
+│   │   │   ├── CodeableConceptDisplay
+│   │   │   │   ├── CodeableConceptDisplay.stories.tsx
+│   │   │   │   ├── CodeableConceptDisplay.test.tsx
+│   │   │   │   └── CodeableConceptDisplay.tsx
+│   │   │   ├── CodeableConceptInput
+│   │   │   │   ├── CodeableConceptInput.stories.tsx
+│   │   │   │   ├── CodeableConceptInput.test.tsx
+│   │   │   │   └── CodeableConceptInput.tsx
+│   │   │   ├── CodingDisplay
+│   │   │   │   ├── CodingDisplay.stories.tsx
+│   │   │   │   ├── CodingDisplay.test.tsx
+│   │   │   │   └── CodingDisplay.tsx
+│   │   │   ├── CodingInput
+│   │   │   │   ├── CodingInput.stories.tsx
+│   │   │   │   ├── CodingInput.test.tsx
+│   │   │   │   └── CodingInput.tsx
+│   │   │   ├── ContactDetailDisplay
+│   │   │   │   ├── ContactDetailDisplay.stories.tsx
+│   │   │   │   ├── ContactDetailDisplay.test.tsx
+│   │   │   │   └── ContactDetailDisplay.tsx
+│   │   │   ├── ContactDetailInput
+│   │   │   │   ├── ContactDetailInput.stories.tsx
+│   │   │   │   ├── ContactDetailInput.test.tsx
+│   │   │   │   └── ContactDetailInput.tsx
+│   │   │   ├── ContactPointDisplay
+│   │   │   │   ├── ContactPointDisplay.stories.tsx
+│   │   │   │   ├── ContactPointDisplay.test.tsx
+│   │   │   │   └── ContactPointDisplay.tsx
+│   │   │   ├── ContactPointInput
+│   │   │   │   ├── ContactPointInput.stories.tsx
+│   │   │   │   ├── ContactPointInput.test.tsx
+│   │   │   │   └── ContactPointInput.tsx
+│   │   │   ├── Container
+│   │   │   │   ├── Container.module.css
+│   │   │   │   └── Container.tsx
+│   │   │   ├── DateTimeInput
+│   │   │   │   ├── DateTimeInput.stories.tsx
+│   │   │   │   ├── DateTimeInput.test.tsx
+│   │   │   │   ├── DateTimeInput.tsx
+│   │   │   │   └── DateTimeInput.utils.ts
+│   │   │   ├── DefaultResourceTimeline
+│   │   │   │   ├── DefaultResourceTimeline.stories.tsx
+│   │   │   │   ├── DefaultResourceTimeline.test.tsx
+│   │   │   │   └── DefaultResourceTimeline.tsx
+│   │   │   ├── DescriptionList
+│   │   │   │   ├── DescriptionList.module.css
+│   │   │   │   ├── DescriptionList.stories.tsx
+│   │   │   │   └── DescriptionList.tsx
+│   │   │   ├── DiagnosticReportDisplay
+│   │   │   │   ├── DiagnosticReportDisplay.module.css
+│   │   │   │   ├── DiagnosticReportDisplay.stories.tsx
+│   │   │   │   ├── DiagnosticReportDisplay.test.tsx
+│   │   │   │   └── DiagnosticReportDisplay.tsx
+│   │   │   ├── Document
+│   │   │   │   ├── Document.stories.tsx
+│   │   │   │   └── Document.tsx
+│   │   │   ├── ElementsInput
+│   │   │   │   ├── ElementsInput.test.tsx
+│   │   │   │   ├── ElementsInput.tsx
+│   │   │   │   ├── ElementsInput.utils.test.ts
+│   │   │   │   └── ElementsInput.utils.ts
+│   │   │   ├── EncounterTimeline
+│   │   │   │   ├── EncounterTimeline.stories.tsx
+│   │   │   │   ├── EncounterTimeline.test.tsx
+│   │   │   │   └── EncounterTimeline.tsx
+│   │   │   ├── ErrorBoundary
+│   │   │   │   ├── ErrorBoundary.stories.tsx
+│   │   │   │   ├── ErrorBoundary.test.tsx
+│   │   │   │   └── ErrorBoundary.tsx
+│   │   │   ├── ExtensionDisplay
+│   │   │   │   ├── ExtensionDisplay.test.tsx
+│   │   │   │   └── ExtensionDisplay.tsx
+│   │   │   ├── ExtensionInput
+│   │   │   │   ├── ExtensionInput.stories.tsx
+│   │   │   │   ├── ExtensionInput.test.tsx
+│   │   │   │   └── ExtensionInput.tsx
+│   │   │   ├── FhirPathDisplay
+│   │   │   │   ├── FhirPathDisplay.stories.tsx
+│   │   │   │   ├── FhirPathDisplay.test.tsx
+│   │   │   │   └── FhirPathDisplay.tsx
+│   │   │   ├── FhirPathTable
+│   │   │   │   ├── FhirPathTable.test.tsx
+│   │   │   │   └── FhirPathTable.tsx
+│   │   │   ├── Form
+│   │   │   │   ├── Form.stories.tsx
+│   │   │   │   ├── Form.tsx
+│   │   │   │   ├── FormUtils.test.ts
+│   │   │   │   └── FormUtils.ts
+│   │   │   ├── FormSection
+│   │   │   │   ├── FormSection.stories.tsx
+│   │   │   │   └── FormSection.tsx
+│   │   │   ├── GoogleButton
+│   │   │   │   ├── GoogleButton.stories.tsx
+│   │   │   │   ├── GoogleButton.test.tsx
+│   │   │   │   ├── GoogleButton.tsx
+│   │   │   │   └── GoogleButton.utils.ts
+│   │   │   ├── HumanNameDisplay
+│   │   │   │   ├── HumanNameDisplay.stories.tsx
+│   │   │   │   ├── HumanNameDisplay.test.tsx
+│   │   │   │   └── HumanNameDisplay.tsx
+│   │   │   ├── HumanNameInput
+│   │   │   │   ├── HumanNameInput.stories.tsx
+│   │   │   │   ├── HumanNameInput.test.tsx
+│   │   │   │   └── HumanNameInput.tsx
+│   │   │   ├── IdentifierDisplay
+│   │   │   │   ├── IdentifierDisplay.stories.tsx
+│   │   │   │   └── IdentifierDisplay.tsx
+│   │   │   ├── IdentifierInput
+│   │   │   │   ├── IdentifierInput.stories.tsx
+│   │   │   │   ├── IdentifierInput.test.tsx
+│   │   │   │   └── IdentifierInput.tsx
+│   │   │   ├── Loading
+│   │   │   │   └── Loading.tsx
+│   │   │   ├── Logo
+│   │   │   │   ├── Logo.stories.tsx
+│   │   │   │   ├── Logo.test.tsx
+│   │   │   │   └── Logo.tsx
+│   │   │   ├── MeasureReportDisplay
+│   │   │   │   ├── MeasureReportDisplay.stories.tsx
+│   │   │   │   ├── MeasureReportDisplay.test.tsx
+│   │   │   │   ├── MeasureReportDisplay.tsx
+│   │   │   │   └── MeasureReportGroupDisplay
+│   │   │   │       └── MeasureReportGroupDisplay.tsx
+│   │   │   ├── MedplumLink
+│   │   │   │   ├── MedplumLink.stories.tsx
+│   │   │   │   ├── MedplumLink.test.tsx
+│   │   │   │   └── MedplumLink.tsx
+│   │   │   ├── MoneyDisplay
+│   │   │   │   ├── MoneyDisplay.stories.tsx
+│   │   │   │   ├── MoneyDisplay.test.tsx
+│   │   │   │   └── MoneyDisplay.tsx
+│   │   │   ├── MoneyInput
+│   │   │   │   ├── MoneyInput.stories.tsx
+│   │   │   │   ├── MoneyInput.test.tsx
+│   │   │   │   └── MoneyInput.tsx
+│   │   │   ├── NoteDisplay
+│   │   │   │   ├── NoteDisplay.module.css
+│   │   │   │   ├── NoteDisplay.stories.tsx
+│   │   │   │   ├── NoteDisplay.test.tsx
+│   │   │   │   └── NoteDisplay.tsx
+│   │   │   ├── NotificationIcon
+│   │   │   │   ├── NotificationIcon.test.tsx
+│   │   │   │   └── NotificationIcon.tsx
+│   │   │   ├── OperationOutcomeAlert
+│   │   │   │   ├── OperationOutcomeAlert.stories.tsx
+│   │   │   │   └── OperationOutcomeAlert.tsx
+│   │   │   ├── Panel
+│   │   │   │   ├── Panel.module.css
+│   │   │   │   ├── Panel.stories.tsx
+│   │   │   │   └── Panel.tsx
+│   │   │   ├── PatientSummary
+│   │   │   │   ├── Allergies.test.tsx
+│   │   │   │   ├── Allergies.tsx
+│   │   │   │   ├── AllergyDialog.tsx
+│   │   │   │   ├── ConceptBadge.tsx
+│   │   │   │   ├── ConditionDialog.tsx
+│   │   │   │   ├── MedicationDialog.tsx
+│   │   │   │   ├── Medications.test.tsx
+│   │   │   │   ├── Medications.tsx
+│   │   │   │   ├── PatientSummary.stories.tsx
+│   │   │   │   ├── PatientSummary.test.tsx
+│   │   │   │   ├── PatientSummary.tsx
+│   │   │   │   ├── ProblemList.test.tsx
+│   │   │   │   ├── ProblemList.tsx
+│   │   │   │   ├── SmokingStatus.test.tsx
+│   │   │   │   ├── SmokingStatus.tsx
+│   │   │   │   ├── Vitals.test.tsx
+│   │   │   │   ├── Vitals.tsx
+│   │   │   │   └── Vitals.utils.ts
+│   │   │   ├── PatientTimeline
+│   │   │   │   ├── PatientTimeline.stories.tsx
+│   │   │   │   ├── PatientTimeline.test.tsx
+│   │   │   │   └── PatientTimeline.tsx
+│   │   │   ├── PeriodInput
+│   │   │   │   ├── PeriodInput.stories.tsx
+│   │   │   │   ├── PeriodInput.test.tsx
+│   │   │   │   └── PeriodInput.tsx
+│   │   │   ├── PlanDefinitionBuilder
+│   │   │   │   ├── PlanDefinitionBuilder.module.css
+│   │   │   │   ├── PlanDefinitionBuilder.stories.tsx
+│   │   │   │   ├── PlanDefinitionBuilder.test.tsx
+│   │   │   │   └── PlanDefinitionBuilder.tsx
+│   │   │   ├── QuantityDisplay
+│   │   │   │   ├── QuantityDisplay.stories.tsx
+│   │   │   │   ├── QuantityDisplay.test.tsx
+│   │   │   │   └── QuantityDisplay.tsx
+│   │   │   ├── QuantityInput
+│   │   │   │   ├── QuantityInput.stories.tsx
+│   │   │   │   ├── QuantityInput.test.tsx
+│   │   │   │   └── QuantityInput.tsx
+│   │   │   ├── QuestionnaireBuilder
+│   │   │   │   ├── QuestionnaireBuilder.module.css
+│   │   │   │   ├── QuestionnaireBuilder.stories.tsx
+│   │   │   │   ├── QuestionnaireBuilder.test.tsx
+│   │   │   │   └── QuestionnaireBuilder.tsx
+│   │   │   ├── QuestionnaireForm
+│   │   │   │   ├── QuestionnaireForm.context.ts
+│   │   │   │   ├── QuestionnaireForm.stories.tsx
+│   │   │   │   ├── QuestionnaireForm.test.tsx
+│   │   │   │   ├── QuestionnaireForm.tsx
+│   │   │   │   ├── QuestionnaireFormComponents
+│   │   │   │   │   ├── QuestionnaireFormGroup.tsx
+│   │   │   │   │   └── QuestionnaireFormPageSequence.tsx
+│   │   │   │   └── QuestionnaireFormItem
+│   │   │   │       ├── QuestionnaireFormItem.tsx
+│   │   │   │       └── QuestionnaireRepeatableItem.tsx
+│   │   │   ├── RangeDisplay
+│   │   │   │   ├── RangeDisplay.stories.tsx
+│   │   │   │   ├── RangeDisplay.test.tsx
+│   │   │   │   └── RangeDisplay.tsx
+│   │   │   ├── RangeInput
+│   │   │   │   ├── RangeInput.stories.tsx
+│   │   │   │   ├── RangeInput.test.tsx
+│   │   │   │   └── RangeInput.tsx
+│   │   │   ├── RatioDisplay
+│   │   │   │   ├── RatioDisplay.stories.tsx
+│   │   │   │   ├── RatioDisplay.test.tsx
+│   │   │   │   └── RatioDisplay.tsx
+│   │   │   ├── RatioInput
+│   │   │   │   ├── RatioInput.stories.tsx
+│   │   │   │   ├── RatioInput.test.tsx
+│   │   │   │   └── RatioInput.tsx
+│   │   │   ├── ReferenceDisplay
+│   │   │   │   ├── ReferenceDisplay.stories.tsx
+│   │   │   │   ├── ReferenceDisplay.test.tsx
+│   │   │   │   └── ReferenceDisplay.tsx
+│   │   │   ├── ReferenceInput
+│   │   │   │   ├── ReferenceInput.stories.tsx
+│   │   │   │   ├── ReferenceInput.test.tsx
+│   │   │   │   └── ReferenceInput.tsx
+│   │   │   ├── ReferenceRangeEditor
+│   │   │   │   ├── ReferenceRangeEditor.module.css
+│   │   │   │   ├── ReferenceRangeEditor.stories.tsx
+│   │   │   │   ├── ReferenceRangeEditor.test.tsx
+│   │   │   │   └── ReferenceRangeEditor.tsx
+│   │   │   ├── RequestGroupDisplay
+│   │   │   │   ├── RequestGroupDisplay.stories.tsx
+│   │   │   │   ├── RequestGroupDisplay.test.tsx
+│   │   │   │   └── RequestGroupDisplay.tsx
+│   │   │   ├── ResourceArrayDisplay
+│   │   │   │   └── ResourceArrayDisplay.tsx
+│   │   │   ├── ResourceArrayInput
+│   │   │   │   ├── ResourceArrayInput.module.css
+│   │   │   │   ├── ResourceArrayInput.test.tsx
+│   │   │   │   ├── ResourceArrayInput.tsx
+│   │   │   │   ├── ResourceArrayInput.utils.test.ts
+│   │   │   │   └── ResourceArrayInput.utils.ts
+│   │   │   ├── ResourceAvatar
+│   │   │   │   ├── ResourceAvatar.stories.tsx
+│   │   │   │   ├── ResourceAvatar.test.tsx
+│   │   │   │   ├── ResourceAvatar.tsx
+│   │   │   │   └── ResourceAvatar.utils.ts
+│   │   │   ├── ResourceBadge
+│   │   │   │   ├── ResourceBadge.stories.tsx
+│   │   │   │   ├── ResourceBadge.test.tsx
+│   │   │   │   └── ResourceBadge.tsx
+│   │   │   ├── ResourceBlame
+│   │   │   │   ├── ResourceBlame.module.css
+│   │   │   │   ├── ResourceBlame.stories.tsx
+│   │   │   │   ├── ResourceBlame.test.tsx
+│   │   │   │   ├── ResourceBlame.tsx
+│   │   │   │   └── ResourceBlame.utils.ts
+│   │   │   ├── ResourceDiff
+│   │   │   │   ├── ResourceDiff.module.css
+│   │   │   │   ├── ResourceDiff.stories.tsx
+│   │   │   │   ├── ResourceDiff.test.tsx
+│   │   │   │   └── ResourceDiff.tsx
+│   │   │   ├── ResourceDiffTable
+│   │   │   │   ├── ResourceDiffTable.module.css
+│   │   │   │   ├── ResourceDiffTable.stories.tsx
+│   │   │   │   ├── ResourceDiffTable.test.tsx
+│   │   │   │   └── ResourceDiffTable.tsx
+│   │   │   ├── ResourceForm
+│   │   │   │   ├── ResourceForm.stories.tsx
+│   │   │   │   ├── ResourceForm.test.tsx
+│   │   │   │   ├── ResourceForm.tsx
+│   │   │   │   └── ResourceForm.utils.ts
+│   │   │   ├── ResourceHistoryTable
+│   │   │   │   ├── ResourceHistoryTable.stories.tsx
+│   │   │   │   ├── ResourceHistoryTable.test.tsx
+│   │   │   │   └── ResourceHistoryTable.tsx
+│   │   │   ├── ResourceInput
+│   │   │   │   ├── ResourceInput.stories.tsx
+│   │   │   │   ├── ResourceInput.test.tsx
+│   │   │   │   └── ResourceInput.tsx
+│   │   │   ├── ResourceName
+│   │   │   │   ├── ResourceName.stories.tsx
+│   │   │   │   ├── ResourceName.test.tsx
+│   │   │   │   └── ResourceName.tsx
+│   │   │   ├── ResourcePropertyDisplay
+│   │   │   │   ├── ResourcePropertyDisplay.stories.tsx
+│   │   │   │   ├── ResourcePropertyDisplay.test.tsx
+│   │   │   │   ├── ResourcePropertyDisplay.tsx
+│   │   │   │   └── ResourcePropertyDisplay.utils.ts
+│   │   │   ├── ResourcePropertyInput
+│   │   │   │   ├── ResourcePropertyInput.stories.tsx
+│   │   │   │   ├── ResourcePropertyInput.test.tsx
+│   │   │   │   ├── ResourcePropertyInput.tsx
+│   │   │   │   └── ResourcePropertyInput.utils.ts
+│   │   │   ├── ResourceTable
+│   │   │   │   ├── ResourceTable.stories.tsx
+│   │   │   │   ├── ResourceTable.test.tsx
+│   │   │   │   └── ResourceTable.tsx
+│   │   │   ├── ResourceTimeline
+│   │   │   │   ├── ResourceTimeline.module.css
+│   │   │   │   ├── ResourceTimeline.stories.tsx
+│   │   │   │   ├── ResourceTimeline.test.tsx
+│   │   │   │   └── ResourceTimeline.tsx
+│   │   │   ├── ResourceTypeInput
+│   │   │   │   └── ResourceTypeInput.tsx
+│   │   │   ├── Scheduler
+│   │   │   │   ├── Scheduler.module.css
+│   │   │   │   ├── Scheduler.stories.tsx
+│   │   │   │   ├── Scheduler.test.tsx
+│   │   │   │   └── Scheduler.tsx
+│   │   │   ├── SearchControl
+│   │   │   │   ├── SearchControl.module.css
+│   │   │   │   ├── SearchControl.stories.tsx
+│   │   │   │   ├── SearchControl.test.tsx
+│   │   │   │   ├── SearchControl.tsx
+│   │   │   │   ├── SearchControlField.test.ts
+│   │   │   │   ├── SearchControlField.ts
+│   │   │   │   ├── SearchUtils.test.tsx
+│   │   │   │   └── SearchUtils.tsx
+│   │   │   ├── SearchExportDialog
+│   │   │   │   ├── SearchExportDialog.stories.tsx
+│   │   │   │   ├── SearchExportDialog.test.tsx
+│   │   │   │   └── SearchExportDialog.tsx
+│   │   │   ├── SearchFieldEditor
+│   │   │   │   ├── SearchFieldEditor.stories.tsx
+│   │   │   │   ├── SearchFieldEditor.test.tsx
+│   │   │   │   └── SearchFieldEditor.tsx
+│   │   │   ├── SearchFilterEditor
+│   │   │   │   ├── SearchFilterEditor.test.tsx
+│   │   │   │   └── SearchFilterEditor.tsx
+│   │   │   ├── SearchFilterValueDialog
+│   │   │   │   └── SearchFilterValueDialog.tsx
+│   │   │   ├── SearchFilterValueDisplay
+│   │   │   │   └── SearchFilterValueDisplay.tsx
+│   │   │   ├── SearchFilterValueInput
+│   │   │   │   ├── SearchFilterValueInput.test.tsx
+│   │   │   │   └── SearchFilterValueInput.tsx
+│   │   │   ├── SearchPopupMenu
+│   │   │   │   ├── SearchPopupMenu.test.tsx
+│   │   │   │   └── SearchPopupMenu.tsx
+│   │   │   ├── SensitiveTextarea
+│   │   │   │   ├── SensitiveTextarea.test.tsx
+│   │   │   │   └── SensitiveTextarea.tsx
+│   │   │   ├── ServiceRequestTimeline
+│   │   │   │   ├── ServiceRequestTimeline.stories.tsx
+│   │   │   │   ├── ServiceRequestTimeline.test.tsx
+│   │   │   │   └── ServiceRequestTimeline.tsx
+│   │   │   ├── SliceDisplay
+│   │   │   │   └── SliceDisplay.tsx
+│   │   │   ├── SliceInput
+│   │   │   │   └── SliceInput.tsx
+│   │   │   ├── SmartAppLaunchLink
+│   │   │   │   ├── SmartAppLaunchLink.stories.tsx
+│   │   │   │   ├── SmartAppLaunchLink.test.tsx
+│   │   │   │   └── SmartAppLaunchLink.tsx
+│   │   │   ├── StatusBadge
+│   │   │   │   ├── StatusBadge.stories.tsx
+│   │   │   │   ├── StatusBadge.test.tsx
+│   │   │   │   └── StatusBadge.tsx
+│   │   │   ├── Timeline
+│   │   │   │   ├── Timeline.stories.tsx
+│   │   │   │   ├── Timeline.test.tsx
+│   │   │   │   └── Timeline.tsx
+│   │   │   ├── TimingInput
+│   │   │   │   ├── TimingInput.stories.tsx
+│   │   │   │   ├── TimingInput.test.tsx
+│   │   │   │   └── TimingInput.tsx
+│   │   │   ├── ValueSetAutocomplete
+│   │   │   │   ├── ValueSetAutocomplete.stories.tsx
+│   │   │   │   └── ValueSetAutocomplete.tsx
+│   │   │   ├── auth
+│   │   │   │   ├── AuthenticationForm.tsx
+│   │   │   │   ├── ChooseProfileForm.stories.tsx
+│   │   │   │   ├── ChooseProfileForm.test.tsx
+│   │   │   │   ├── ChooseProfileForm.tsx
+│   │   │   │   ├── ChooseScopeForm.tsx
+│   │   │   │   ├── MfaForm.tsx
+│   │   │   │   ├── NewProjectForm.tsx
+│   │   │   │   ├── NewUserForm.tsx
+│   │   │   │   ├── RegisterForm.stories.tsx
+│   │   │   │   ├── RegisterForm.test.tsx
+│   │   │   │   ├── RegisterForm.tsx
+│   │   │   │   ├── SignInForm.stories.tsx
+│   │   │   │   ├── SignInForm.test.tsx
+│   │   │   │   └── SignInForm.tsx
+│   │   │   ├── buttons
+│   │   │   │   ├── ArrayAddButton.tsx
+│   │   │   │   └── ArrayRemoveButton.tsx
+│   │   │   ├── chat
+│   │   │   │   ├── BaseChat
+│   │   │   │   │   ├── BaseChat.module.css
+│   │   │   │   │   ├── BaseChat.stories.tsx
+│   │   │   │   │   ├── BaseChat.test.tsx
+│   │   │   │   │   └── BaseChat.tsx
+│   │   │   │   ├── ChatModal
+│   │   │   │   │   ├── ChatModal.module.css
+│   │   │   │   │   ├── ChatModal.stories.tsx
+│   │   │   │   │   ├── ChatModal.test.tsx
+│   │   │   │   │   └── ChatModal.tsx
+│   │   │   │   └── ThreadChat
+│   │   │   │       ├── ThreadChat.stories.tsx
+│   │   │   │       ├── ThreadChat.test.tsx
+│   │   │   │       └── ThreadChat.tsx
+│   │   │   ├── constants.ts
+│   │   │   ├── globals.d.ts
+│   │   │   ├── index.test.ts
+│   │   │   ├── index.ts
+│   │   │   ├── stories
+│   │   │   │   ├── Introduction.mdx
+│   │   │   │   ├── MockDateWrapper.tsx
+│   │   │   │   ├── MockDateWrapper.utils.ts
+│   │   │   │   ├── covid19.ts
+│   │   │   │   ├── decorators.tsx
+│   │   │   │   ├── healthgorilla.ts
+│   │   │   │   └── referenceLab.ts
+│   │   │   ├── test-utils
+│   │   │   │   └── render.tsx
+│   │   │   ├── test.setup.ts
+│   │   │   └── utils
+│   │   │       ├── blame.test.ts
+│   │   │       ├── blame.ts
+│   │   │       ├── date.test.ts
+│   │   │       ├── date.ts
+│   │   │       ├── diff.test.ts
+│   │   │       ├── diff.ts
+│   │   │       ├── dom.test.ts
+│   │   │       ├── dom.ts
+│   │   │       ├── maybeWrapWithContext.tsx
+│   │   │       ├── outcomes.test.ts
+│   │   │       ├── outcomes.ts
+│   │   │       ├── questionnaire.test.ts
+│   │   │       ├── questionnaire.ts
+│   │   │       ├── recaptcha.test.ts
+│   │   │       ├── recaptcha.ts
+│   │   │       ├── script.test.ts
+│   │   │       └── script.ts
+│   │   ├── tsconfig.json
+│   │   └── tsdoc.json
+│   └── react-hooks
+│       ├── README.md
+│       ├── api-extractor.json
+│       ├── babel.config.json
+│       ├── esbuild.mjs
+│       ├── jest.config.json
+│       ├── package-lock.json
+│       ├── package.json
+│       ├── src
+│       │   ├── MedplumProvider
+│       │   │   ├── MedplumProvider.context.ts
+│       │   │   ├── MedplumProvider.test.tsx
+│       │   │   └── MedplumProvider.tsx
+│       │   ├── index.test.ts
+│       │   ├── index.ts
+│       │   ├── test.setup.ts
+│       │   ├── useCachedBinaryUrl
+│       │   │   └── useCachedBinaryUrl.ts
+│       │   ├── usePrevious
+│       │   │   ├── usePrevious.test.tsx
+│       │   │   └── usePrevious.ts
+│       │   ├── useResource
+│       │   │   ├── useResource.test.tsx
+│       │   │   └── useResource.ts
+│       │   ├── useSearch
+│       │   │   ├── useSearch.test.tsx
+│       │   │   ├── useSearch.ts
+│       │   │   ├── useSearchOne.test.tsx
+│       │   │   └── useSearchResources.test.tsx
+│       │   └── useSubscription
+│       │       ├── useSubscription.test.tsx
+│       │       └── useSubscription.ts
+│       ├── tsconfig.json
+│       └── tsdoc.json
+├── project_structure.txt
+└── tsconfig.json
+
+151 directories, 622 files

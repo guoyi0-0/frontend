@@ -42,10 +42,9 @@ export function ProblemList(props: ProblemListProps): JSX.Element {
           Problem List
         </Text>
         <Anchor
-          component="button"
+          href="#"
           onClick={(e) => {
             killEvent(e);
-            setEditCondition(undefined);
             open();
           }}
         >
@@ -58,11 +57,11 @@ export function ProblemList(props: ProblemListProps): JSX.Element {
             <Fragment key={problem.id}>
               <Grid.Col span={2}>{problem.onsetDateTime?.substring(0, 4)}</Grid.Col>
               <Grid.Col span={10}>
-                <ConceptBadge<Condition>
+                <ConceptBadge
                   key={problem.id}
                   resource={problem}
-                  onEdit={(c) => {
-                    setEditCondition(c);
+                  onEdit={(p) => {
+                    setEditCondition(p as Condition);
                     open();
                   }}
                 />

@@ -39,8 +39,7 @@ export function AttachmentDisplay(props: AttachmentDisplayProps): JSX.Element | 
       )}
       <div data-testid="download-link" style={{ padding: '2px 16px 16px 16px' }}>
         <Anchor
-          // use the `uncachedUrl` to download the file as the cached URL may expire by the time the user clicks the download link
-          href={uncachedUrl}
+          href={url}
           data-testid="attachment-details"
           target="_blank"
           rel="noopener noreferrer"

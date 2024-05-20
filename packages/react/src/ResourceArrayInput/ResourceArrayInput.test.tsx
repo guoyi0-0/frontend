@@ -32,7 +32,6 @@ const slicedProperty: InternalSchemaElement = {
         name: 'chocolateVariety',
         path: 'IceCream.flavors',
         definition: 'The type of chocolate you prefer',
-        description: 'The type of chocolate you prefer',
         elements: {
           url: {
             path: 'IceCream.flavors.url',
@@ -58,7 +57,6 @@ const slicedProperty: InternalSchemaElement = {
         name: 'vanillaVariety',
         path: 'IceCream.flavors',
         definition: 'The type of vanilla ice cream you prefer',
-        description: 'The type of vanilla ice cream you prefer',
         elements: {
           url: {
             path: 'IceCream.flavors.url',

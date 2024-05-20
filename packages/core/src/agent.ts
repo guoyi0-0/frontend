@@ -47,26 +47,11 @@ export interface AgentTransmitResponse extends BaseAgentMessage {
   body: string;
 }
 
-export interface AgentReloadConfigRequest extends BaseAgentMessage {
-  type: 'agent:reloadconfig:request';
-}
-
-export interface AgentReloadConfigResponse extends BaseAgentMessage {
-  type: 'agent:reloadconfig:response';
-  statusCode: number;
-}
-
-export type AgentRequestMessage =
+export type AgentMessage =
+  | AgentError
   | AgentConnectRequest
-  | AgentHeartbeatRequest
-  | AgentTransmitRequest
-  | AgentReloadConfigRequest;
-
-export type AgentResponseMessage =
   | AgentConnectResponse
+  | AgentHeartbeatRequest
   | AgentHeartbeatResponse
-  | AgentTransmitResponse
-  | AgentReloadConfigResponse
-  | AgentError;
-
-export type AgentMessage = AgentRequestMessage | AgentResponseMessage;
+  | AgentTransmitRequest
+  | AgentTransmitResponse;

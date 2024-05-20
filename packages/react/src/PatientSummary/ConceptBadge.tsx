@@ -6,12 +6,12 @@ import { ReactNode } from 'react';
 import { MedplumLink } from '../MedplumLink/MedplumLink';
 import { killEvent } from '../utils/dom';
 
-export interface ConceptBadgeProps<T extends Resource> {
-  readonly resource: T;
-  readonly onEdit?: (resource: T) => void;
+export interface ConceptBadgeProps {
+  readonly resource: Resource;
+  readonly onEdit?: (resource: Resource) => void;
 }
 
-export function ConceptBadge<T extends Resource = Resource>(props: ConceptBadgeProps<T>): JSX.Element {
+export function ConceptBadge(props: ConceptBadgeProps): JSX.Element {
   const { resource, onEdit } = props;
 
   let rightSection: ReactNode | undefined = undefined;
