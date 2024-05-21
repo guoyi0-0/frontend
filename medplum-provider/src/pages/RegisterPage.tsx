@@ -34,7 +34,7 @@ export function RegisterPage(): JSX.Element | null {
       //googleClientId={config.googleClientId}
       recaptchaSiteKey={config.recaptchaSiteKey}
     >
-      <Logo size={32} />
+      <Logo size={140} />
       <Title>Create a new account</Title>
     </RegisterForm>
   );

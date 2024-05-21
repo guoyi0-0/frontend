@@ -18,6 +18,13 @@ const medplum = new MedplumClient({
 });
 
 const theme = createTheme({
+  colors: {
+    main: ['#FDE8E8', '#FBCBCB', '#F8AAAA', '#F68383', '#F45D5D', '#F33333', '#F22222', '#F00000', '#DC0000', '#C70000'],
+    shades: ['#E6D2D2', '#CCB4B4', '#B39595', '#997777', '#805959', '#664040', '#4C2B2B', '#331515', '#1A0000', '#000000'],
+    tints: ['#FBE2E2', '#F6C2C2', '#F1A2A2', '#EC8282', '#E76262', '#E24242', '#DD2222', '#D80202', '#D30101', '#CE0000'],
+    logo: ['#FBE3E3', '#F7C5C5', '#F4A8A8', '#F08A8A', '#EC6D6D', '#E84F4F', '#E53232', '#E11414', '#DD0000', '#D80000'],
+  },
+  primaryColor: 'shades',
   headings: {
     sizes: {
       h1: {
@@ -28,7 +35,7 @@ const theme = createTheme({
     },
   },
   fontSizes: {
-    xs: '0.6875rem',
+    xs: '0.8rem',
     sm: '0.875rem',
     md: '0.875rem',
     lg: '1.0rem',
