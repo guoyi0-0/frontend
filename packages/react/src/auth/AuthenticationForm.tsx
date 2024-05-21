@@ -1,8 +1,8 @@
 import { Anchor, Button, Center, Checkbox, Divider, Group, PasswordInput, Stack, TextInput } from '@mantine/core';
 import {
   BaseLoginRequest,
-  GoogleCredentialResponse,
-  GoogleLoginRequest,
+  //GoogleCredentialResponse,
+  //GoogleLoginRequest,
   LoginAuthenticationResponse,
   normalizeOperationOutcome,
 } from '@medplum/core';
@@ -10,8 +10,11 @@ import { OperationOutcome } from '@medplum/fhirtypes';
 import { useMedplum } from '@medplum/react-hooks';
 import { ReactNode, useCallback, useState } from 'react';
 import { Form } from '../Form/Form';
-import { GoogleButton } from '../GoogleButton/GoogleButton';
-import { getGoogleClientId } from '../GoogleButton/GoogleButton.utils';
+/*
+ We disabled the GoogleButton import because it's not available in the Empallo project
+*/
+//import { GoogleButton } from '../GoogleButton/GoogleButton';
+//import { getGoogleClientId } from '../GoogleButton/GoogleButton.utils';
 import { OperationOutcomeAlert } from '../OperationOutcomeAlert/OperationOutcomeAlert';
 import { getErrorsForInput, getIssuesForExpression } from '../utils/outcomes';
 
@@ -46,7 +49,10 @@ export interface EmailFormProps extends BaseLoginRequest {
 export function EmailForm(props: EmailFormProps): JSX.Element {
   const { setEmail, onRegister, handleAuthResponse, children, disableEmailAuth, ...baseLoginRequest } = props;
   const medplum = useMedplum();
-  const googleClientId = !props.disableGoogleAuth && getGoogleClientId(props.googleClientId);
+  /*
+  We disable the google auth because it's not excepted in the Empallo project
+   */
+  //const googleClientId = !props.disableGoogleAuth && getGoogleClientId(props.googleClientId);
   const [outcome, setOutcome] = useState<OperationOutcome>();
   const issues = getIssuesForExpression(outcome, undefined);
 
@@ -78,7 +84,10 @@ export function EmailForm(props: EmailFormProps): JSX.Element {
     [medplum, isExternalAuth, setEmail]
   );
 
-  const handleGoogleCredential = useCallback(
+  /*
+  We disable the google auth because it's not excepted in the Empallo project
+   */
+  /*const handleGoogleCredential = useCallback(
     async (response: GoogleCredentialResponse) => {
       try {
         const authResponse = await medplum.startGoogleLogin({
@@ -94,19 +103,19 @@ export function EmailForm(props: EmailFormProps): JSX.Element {
     },
     [medplum, baseLoginRequest, isExternalAuth, handleAuthResponse]
   );
-
+  */
   return (
     <Form onSubmit={handleSubmit}>
       <Center style={{ flexDirection: 'column' }}>{children}</Center>
       <OperationOutcomeAlert issues={issues} />
-      {googleClientId && (
+       {/*{googleClientId && (
         <>
           <Group justify="center" p="xl" style={{ height: 70 }}>
             <GoogleButton googleClientId={googleClientId} handleGoogleCredential={handleGoogleCredential} />
           </Group>
           {!disableEmailAuth && <Divider label="or" labelPosition="center" my="lg" />}
         </>
-      )}
+       )} */}
       {!disableEmailAuth && (
         <TextInput
           name="email"

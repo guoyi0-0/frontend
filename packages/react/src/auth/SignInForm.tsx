@@ -121,7 +121,7 @@ export function SignInForm(props: SignInFormProps): JSX.Element {
               onForgotPassword={onForgotPassword}
               onRegister={onRegister}
               handleAuthResponse={handleAuthResponse}
-              disableGoogleAuth={props.disableGoogleAuth}
+              disableGoogleAuth={true}
               disableEmailAuth={props.disableEmailAuth}
               {...baseLoginRequest}
             >

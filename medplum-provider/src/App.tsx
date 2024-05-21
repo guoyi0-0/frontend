@@ -24,6 +24,7 @@ import { HomePage } from './pages/HomePage';
 import { OnboardingPage } from './pages/OnboardingPage';
 import { SearchPage } from './pages/SearchPage';
 import { SignInPage } from './pages/SignInPage';
+import { RegisterPage } from './pages/RegisterPage';
 import { EditTab } from './pages/patient/EditTab';
 import { EncounterTab } from './pages/patient/EncounterTab';
 import { PatientPage } from './pages/patient/PatientPage';
@@ -140,6 +141,7 @@ export function App(): JSX.Element | null {
           ) : (
             <>
               <Route path="/signin" element={<SignInPage />} />
+              <Route path="/register" element={<RegisterPage />} />
               <Route path="*" element={<Navigate to="/signin" replace />} />
             </>
           )}
