@@ -113,7 +113,7 @@ export function SignInForm(props: SignInFormProps): JSX.Element {
   }, [medplum, loginCode, loginRequested, login, handleAuthResponse]);
 
   return (
-    <Document width={450} px="sm" py="md">
+    <Document width={900} height={400} px="sm" py="md">
       {(() => {
         if (!login) {
           return (

@@ -32,7 +32,8 @@ export function SignInPage(): JSX.Element {
       login={searchParams.get('login') || undefined}
       projectId={searchParams.get('project') || undefined}
     >
-      <Logo size={32} />
+      <Logo size={250} />
+      <br></br>
       <Title>Sign in to Empallo</Title>
       {searchParams.get('project') === 'new' && <div>Sign in again to create a new project</div>}
     </SignInForm>
