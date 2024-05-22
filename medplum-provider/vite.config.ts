@@ -27,4 +27,24 @@ export default defineConfig({
       '@medplum/react-hooks': path.resolve(__dirname, '../packages/react-hooks/src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined
+      }
+    },
+    sourcemap: false,
+    terserOptions: {
+      mangle: {
+        keep_classnames: true,
+        keep_fnames: true,
+      },
+      compress: {
+        drop_console: true,
+      },
+      output: {
+        comments: false,
+      },
+    }
+  }
 });

@@ -42,6 +42,10 @@ export function App(): JSX.Element | null {
   const profile = useMedplumProfile();
   const navigate = useMedplumNavigate();
 
+  console.log('App rendering...');
+  console.log('Medplum Provider:', medplum);
+  console.log('Profile:', profile);
+
   if (medplum.isLoading()) {
     return null;
   }

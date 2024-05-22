@@ -1,4 +1,5 @@
-import { MantineProvider, createTheme } from '@mantine/core';
+import { MantineProvider } from '@mantine/core';
+import { createTheme } from '@mantine/core';
 import '@mantine/core/styles.css';
 import { MedplumClient } from '@medplum/core';
 import { MedplumProvider } from '@medplum/react';
@@ -51,6 +52,10 @@ const navigate = (path: string): Promise<void> => router.navigate(path);
 
 const container = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(container);
+
+console.log('Rendering application...');
+console.log('MantineProvider:', MantineProvider);
+
 root.render(
   <StrictMode>
     <MedplumProvider medplum={medplum} navigate={navigate}>
