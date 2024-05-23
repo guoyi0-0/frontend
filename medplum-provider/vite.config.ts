@@ -22,6 +22,8 @@ export default defineConfig({
   publicDir: 'static',
   resolve: {
     alias: {
+      '@mantine/core': path.resolve(__dirname, 'node_modules/@mantine/core'),
+    '@mantine/notifications': path.resolve(__dirname, 'node_modules/@mantine/notifications'),
       '@medplum/core': path.resolve(__dirname, '../packages/core/src'),
       '@medplum/react': path.resolve(__dirname, '../packages/react/src'),
       '@medplum/react-hooks': path.resolve(__dirname, '../packages/react-hooks/src'),
@@ -33,7 +35,7 @@ export default defineConfig({
         manualChunks: undefined
       }
     },
-    sourcemap: false,
+    sourcemap: true,
     terserOptions: {
       mangle: {
         keep_classnames: true,
@@ -45,6 +47,12 @@ export default defineConfig({
       output: {
         comments: false,
       },
-    }
-  }
+    },
+    commonjsOptions: {
+      include: /node_modules/,
+    },
+  },
+  optimizeDeps: {
+    include: ['@mantine/core', '@mantine/notifications'],
+  },
 });

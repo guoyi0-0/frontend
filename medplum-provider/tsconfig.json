@@ -15,5 +15,10 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [
+    { "path": "../packages/core" },
+    { "path": "../packages/react" },
+    { "path": "../packages/react-hooks" }
+  ]
 }

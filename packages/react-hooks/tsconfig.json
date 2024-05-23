@@ -4,6 +4,7 @@
     "lib": ["esnext", "dom", "dom.iterable"],
     "outDir": "dist/types",
     "noEmit": false,
+    "composite": true,
     "emitDeclarationOnly": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]

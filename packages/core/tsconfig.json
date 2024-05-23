@@ -6,6 +6,7 @@
     "lib": ["esnext", "dom"],
     "outDir": "dist/types",
     "noEmit": false,
+    "composite": true,
     "emitDeclarationOnly": true
   },
   "include": ["src/**/*.ts"]

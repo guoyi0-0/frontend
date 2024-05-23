@@ -54,7 +54,7 @@
     "clean": "rimraf dist",
     "test": "jest"
   },
-  "devDependencies": {
+  "dependencies": {
     "@medplum/definitions": "3.1.5",
     "@medplum/fhirtypes": "3.1.5",
     "jest-websocket-mock": "2.5.0"

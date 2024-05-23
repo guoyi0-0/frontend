@@ -19,7 +19,7 @@
       "@medplum/eslint-config"
     ]
   },
-  "devDependencies": {
+  "dependencies": {
     
     "@mantine/notifications": "^7.8.1",
     "@mantine/core": "^7.8.1",
