@@ -13,7 +13,7 @@ dns.setDefaultResultOrder('verbatim');
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  envPrefix: ['MEDPLUM_','RECAPTCHA_'],
+  envPrefix: ['VITE_'],
   plugins: [react()],
   server: {
     host: 'localhost',

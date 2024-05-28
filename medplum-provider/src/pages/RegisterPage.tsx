@@ -9,6 +9,7 @@ export function RegisterPage(): JSX.Element | null {
   const medplum = useMedplum();
   const navigate = useNavigate();
   const config = getConfig();
+  console.log('Environment variables:', import.meta.env);
 
   useEffect(() => {
     if (medplum.getProfile()) {
