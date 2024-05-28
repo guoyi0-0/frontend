@@ -31,7 +31,7 @@ export function RegisterPage(): JSX.Element | null {
       type="project"
       projectId="new"
       onSuccess={() => navigate('/')}
-      //googleClientId={config.googleClientId}
+      googleClientId={config.googleClientId}
       recaptchaSiteKey={config.recaptchaSiteKey}
     >
       <Logo size={140} />
